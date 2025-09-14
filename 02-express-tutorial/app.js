@@ -1,28 +1,18 @@
 const express= require('express')
-const app=express();
+const app= express()
+const path=require('path')
 
-app.get('/', (req, res)=>{
-     res.status(200).send('hello this is home page')
-})
-app.get('/about', (req, res)=>{
-    res.status(200).send('this is about page')
-})
+//setup status and middleware
+app.use(express.static('./methods-public'))
+
+// app.get('/',(req, res)=>{
+
+//     res.sendFile(path.resolve(__dirname,"./navbar-app/index.html"))
+// })
 app.all('*',(req, res)=>{
-    res.status(404).send('<h1>page not found</h1>')
+    res.status(404).send('resourse not found')
 })
-
 
 app.listen(5000, ()=>{
-    console.log('server is listening on port 5000')
+    console.log('server running on port 5000')
 })
-
-// app.get
-
-//app.post
-
-//app.put
-
-//app.delete
-
-//app.all
-
